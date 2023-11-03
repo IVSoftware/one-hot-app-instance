@@ -2,6 +2,9 @@
 
 Subsequent attempts to invoke the static entry point `static void Main()` will be unable to enter the mutex block. If the goal is to prevent the new instance from running, take this opportunity to leave the running instance alone and prevent new one from running, per my original answer.
 
+___
+
+
 To satisfy the second clause of the question **if it does, close the first instance**, we can take a different approach. using the _original no mutex_ version of `Program.cs`,  make the the main form class broadcast a WM_USER message after taking care to innoculate itself from the effects. Other window instances of MainForm will now close themselves.
 
 ```
